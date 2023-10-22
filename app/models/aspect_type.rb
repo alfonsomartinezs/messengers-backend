@@ -1,0 +1,2 @@
+class AspectType < ApplicationRecord
+end
