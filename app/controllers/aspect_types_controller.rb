@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AspectTypesController < ApplicationController
   before_action :set_aspect_type, only: %i[show update destroy]
 

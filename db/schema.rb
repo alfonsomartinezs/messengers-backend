@@ -10,25 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_21_052314) do
+ActiveRecord::Schema[7.0].define(version: 20_231_022_225_932) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension 'plpgsql'
 
-  create_table "aspect_types", force: :cascade do |t|
-    t.string "name"
-    t.string "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'aspect_types', force: :cascade do |t|
+    t.string 'name'
+    t.string 'description'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "fractals", force: :cascade do |t|
-    t.string "name"
-    t.string "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "parent_id"
-    t.index ["parent_id"], name: "index_fractals_on_parent_id"
+  create_table 'aspects', force: :cascade do |t|
+    t.string 'title'
+    t.bigint 'aspect_type_id', null: false
+    t.bigint 'fractal_id', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['aspect_type_id'], name: 'index_aspects_on_aspect_type_id'
+    t.index ['fractal_id'], name: 'index_aspects_on_fractal_id'
   end
 
-  add_foreign_key "fractals", "fractals", column: "parent_id"
+  create_table 'fractals', force: :cascade do |t|
+    t.string 'name'
+    t.string 'description'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.bigint 'parent_id'
+    t.index ['parent_id'], name: 'index_fractals_on_parent_id'
+  end
+
+  add_foreign_key 'aspects', 'aspect_types'
+  add_foreign_key 'aspects', 'fractals'
+  add_foreign_key 'fractals', 'fractals', column: 'parent_id'
 end
