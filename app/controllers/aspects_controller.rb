@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class AspectsController < ApplicationController
-  before_action :set_aspect, only: %i[ show update destroy ]
+  before_action :set_aspect, only: %i[show update destroy]
 
   # GET /aspects
   def index
@@ -41,13 +41,14 @@ class AspectsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_aspect
-      @aspect = Aspect.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def aspect_params
-      params.require(:aspect).permit(:title, :aspect_type_id, :fractal_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_aspect
+    @aspect = Aspect.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def aspect_params
+    params.require(:aspect).permit(:title, :aspect_type_id, :fractal_id)
+  end
 end
