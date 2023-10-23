@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class AspectsController < ApplicationController
+class Api::V1::AspectsController < ApplicationController
   before_action :set_aspect, only: %i[show update destroy]
 
   # GET /aspects

@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 # Fractals are what the rest of the objects are based on -- characters, places, etc.
-class FractalsController < ApplicationController
-  before_action :set_fractal, only: %i[show update destroy]
+class Api::V1::FractalsController < ApplicationController
+  before_action :set_fractal, only: %i[show update destroy assign_aspect]
 
   # GET /fractals
   def index
@@ -36,6 +36,14 @@ class FractalsController < ApplicationController
     end
   end
 
+  def assign_aspect
+    if @fractal.create_aspect(params[:new_aspect_type], params[:aspect_title])
+      render json: @fractal, serializer: FractalDetailSerializer
+    else
+      render json: @fractal.errors, status: :unprocessable_entity
+    end
+  end
+
   # DELETE /fractals/1
   def destroy
     @fractal.destroy
@@ -52,4 +60,5 @@ class FractalsController < ApplicationController
   def fractal_params
     params.require(:fractal).permit(:name, :description)
   end
+
 end
