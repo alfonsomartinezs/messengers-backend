@@ -13,4 +13,8 @@ class Aspect < ApplicationRecord
   def capitalize_title
     self.title = title.titleize
   end
+
+  def aspect_type_name
+    aspect_type.name
+  end
 end

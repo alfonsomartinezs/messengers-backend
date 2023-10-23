@@ -13,7 +13,7 @@ class FractalsController < ApplicationController
 
   # GET /fractals/1
   def show
-    render json: @fractal
+    render json: @fractal, serializer: FractalDetailSerializer
   end
 
   # POST /fractals
