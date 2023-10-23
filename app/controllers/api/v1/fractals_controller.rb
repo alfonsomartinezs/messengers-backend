@@ -58,7 +58,6 @@ class Api::V1::FractalsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def fractal_params
-    params.require(:fractal).permit(:name, :description)
+    params.require(:fractal).permit(:name, :description, :image)
   end
-
 end
