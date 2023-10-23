@@ -4,7 +4,7 @@
 class Aspect < ApplicationRecord
   before_validation :capitalize_title
   validates :title, presence: true
-  validates :title, uniqueness: { scope: :fractal }
+  validates :aspect_type, uniqueness: { scope: :fractal }
   belongs_to :aspect_type
   belongs_to :fractal
 
