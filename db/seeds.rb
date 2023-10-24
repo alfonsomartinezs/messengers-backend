@@ -9,7 +9,7 @@
 default_character_aspect_types = [
   {
     name: 'High Concept',
-    description: 'Your high concept is a phrase that sums up what your character is about — who they are and what they do.'
+    description: 'Your high concept is a phrase that sums up who your character is and what they do.'
   },
   {
     name: 'Trouble',
